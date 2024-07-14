@@ -1,11 +1,14 @@
-from sqlalchemy import create_engine, BIGINT, MetaData
+from asyncio import current_task
+from sqlalchemy import BIGINT, MetaData
+
+from sqlalchemy.ext.asyncio import AsyncAttrs, create_async_engine, async_sessionmaker, async_scoped_session
 from sqlalchemy.orm import sessionmaker, scoped_session, DeclarativeBase, Mapped, mapped_column
 import os
 
 from typing import Annotated
 
-engine = create_engine(os.environ['DATABASE_URL'])
-session = scoped_session(sessionmaker(bind=engine))
+engine = create_async_engine(os.environ['DATABASE_URL'])
+session = async_scoped_session(async_sessionmaker(bind=engine), current_task)
 
 # constraints naming convention
 convention = {
@@ -16,7 +19,7 @@ convention = {
   "pk": "pk_%(table_name)s"
 }
 
-class Base(DeclarativeBase):
+class Base(AsyncAttrs, DeclarativeBase):
     metadata = MetaData(naming_convention=convention)
 
 # custom types
