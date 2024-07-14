@@ -1,10 +1,11 @@
 from api.db import session
 from .models import Note
 
-def get_note(note_id: int) -> Note | None:
-    return session.query(Note).filter(Note.id == note_id).first()
+async def get_note_by_id(note_id: int) -> Note | None:
+    note = await session.get(Note, note_id)
+    return note
 
-def create_note(
+async def create_note_func(
     title: str, 
     content: str, 
 ) -> Note:
@@ -13,5 +14,5 @@ def create_note(
         content=content,
     )
     session.add(note)
-    session.commit()
+    await session.commit()
     return note
