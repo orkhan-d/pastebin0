@@ -8,12 +8,12 @@ from api.s3 import S3Bucket
 
 from .models import Note
 from .schemas import CreateNoteSchema, NoteInfoSchema
-from .utils import generate_hashname, get_note_by_hashname, create_note_func
+from .utils import generate_hashname, create_note_func, get_note_by_id
 
 router = APIRouter(prefix='/notes', tags=['notes'])
 
-@router.get('/{hashname}')
-async def read_notes(note: Annotated[Note, Depends(get_note_by_hashname)],
+@router.get('/{note_id}')
+async def read_notes(note: Annotated[Note, Depends(get_note_by_id)],
                      s3: Annotated[S3Bucket, Depends(get_s3_client)]):
     try:
         content = await s3.get_file(note.aws_filename)
