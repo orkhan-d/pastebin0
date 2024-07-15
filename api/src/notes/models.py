@@ -5,4 +5,4 @@ class Note(Base):
 
     id: Mapped[bigint_pk]
     title: Mapped[str] = mapped_column()
-    content: Mapped[str] = mapped_column()
+    aws_filename: Mapped[str] = mapped_column()
