@@ -6,12 +6,12 @@ async def get_note_by_id(note_id: int) -> Note | None:
     return note
 
 async def create_note_func(
-    title: str, 
-    content: str, 
+    title: str,
+    aws_filename: str
 ) -> Note:
     note = Note(
         title=title,
-        content=content,
+        aws_filename=aws_filename
     )
     session.add(note)
     await session.commit()

@@ -7,4 +7,3 @@ class CreateNoteSchema(BaseModel):
 class NoteInfoSchema(BaseModel):
     title: str
     content: str
-    filename: str
