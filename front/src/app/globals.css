@@ -24,6 +24,10 @@
     }
 }
 
+* {
+    color: var(--main-text-color);
+}
+
 html, body {
     min-height: 100dvh;
     background-color: var(--bg-color);
