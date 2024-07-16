@@ -1,0 +1,18 @@
+.noteContentInput {
+    resize: vertical;
+    width: 100%;
+    height: 100%;
+
+    min-height: 300px;
+
+    background-color: var(--card-bg-color);
+    border-radius: 15px;
+    padding: 10px;
+    font-size: .9rem;
+    color: var(--main-text-color);
+}
+
+.noteContentInput::placeholder {
+    color: var(--description-text-color);
+    opacity: 0.7;
+}
