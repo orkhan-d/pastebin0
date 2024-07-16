@@ -1,0 +1,12 @@
+.navbar {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.header {
+    width: 100vw;
+    border-bottom: 1px solid var(--card-bg-color);
+}
