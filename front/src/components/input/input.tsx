@@ -1,21 +1,19 @@
 import React from 'react';
 import cl from './style.module.css';
 
-const Input = ({name, placeholder, fullWidth = true, className = "", ...props}: {
-    name: string,
-    placeholder: string,
-    fullWidth?: boolean,
-    className?: string
-}) => {
-    let classes: string[] = [cl.input, className];
-    if (fullWidth) {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    fullWidth?: boolean
+}
+
+const Input: React.FC<InputProps> = ({...props}) => {
+    let classes: string[] = [cl.input, props.className ?? ''];
+    if (props.fullWidth) {
         classes.push("w-full");
     }
 
     return (
-        <input placeholder={placeholder}
-               name={name}
-               className={classes.join(' ')}
+        <input className={classes.join(' ')}
+               {...props}
         />
     );
 };

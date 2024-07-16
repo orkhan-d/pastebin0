@@ -7,17 +7,17 @@ const styles = {
     success: cl.successBtn,
 }
 
-const Button = ({style, children, className, onClick, ...props}: {
-    style: 'success',
-    size?: 'default' | 'full' | 'icon',
-    children?: React.ReactNode,
-    className?: string,
-    onClick?: () => void
-}) => {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    variant: 'success',
+    size?: 'default' | 'full' | 'icon'
+}
+
+const Button: React.FC<ButtonProps> = (props) => {
 
     return (
-        <button onClick={onClick} className={[className, styles[style]].join(' ')}>
-            {children}
+        <button onClick={props.onClick}
+                className={[props.className, styles[props.variant]].join(' ')}>
+            {props.children}
         </button>
     );
 };
