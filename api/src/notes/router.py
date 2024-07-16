@@ -35,7 +35,6 @@ async def create_note(data: CreateNoteSchema,
     return JSONResponse(
         status_code=status.HTTP_201_CREATED,
         content={
-            'message': 'Note created successfully',
-            'hashname': await generate_hashname(note_id)
+            'hash': await generate_hashname(note_id)
         }
     )
