@@ -1,0 +1,7 @@
+.input {
+    border-radius: 10px;
+    background-color: var(--card-bg-color);
+    padding: 8px 10px;
+    font-size: .9rem;
+    color: var(--main-text-color);
+}
