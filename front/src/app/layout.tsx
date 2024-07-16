@@ -19,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} min-h-screen`}>
         <Navbar/>
-        {children}
+        <div className="p-3">
+            {children}
+        </div>
       </body>
     </html>
   );
