@@ -2,18 +2,22 @@ import React from 'react';
 import cl from './style.module.css';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    fullWidth?: boolean
+    fullwidth: boolean
 }
 
 const Input: React.FC<InputProps> = ({...props}) => {
-    let classes: string[] = [cl.input, props.className ?? ''];
-    if (props.fullWidth) {
+    let classes: string[] = [cl.input];
+    if (props.className)
+        classes.push(props.className)
+    if (props.fullwidth) {
         classes.push("w-full");
     }
 
+    console.log(classes)
+
     return (
-        <input className={classes.join(' ')}
-               {...props}
+        <input {...props}
+               className={classes.join(' ')}
         />
     );
 };
